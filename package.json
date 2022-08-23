@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 3003",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start -p 3003",
     "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,8 @@
     "particles-bg": "^2.5.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "three": "^0.143.0",
+    "zustand": "^4.1.0"
   }
 }
