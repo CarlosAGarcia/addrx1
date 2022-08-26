@@ -3,8 +3,8 @@ import { useStore } from '../../stores/threeStore'
 
 export default function Landing() {
     const init = useStore(state => state.init)
-    // const animate = useStore(state => state.animate)
-
+    const { totalAnimationTime, isInit } = useStore(state => state)
+    console.log({ totalAnimationTime, isInit })
     useEffect(() => {
         init()
         // animate()
