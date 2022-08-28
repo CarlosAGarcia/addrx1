@@ -46,6 +46,11 @@ let originalX, originalY, originalZ, originalRotX, originalRotY, originalRotZ //
 let targetX, targetY, targetZ, targetRotateX, targetRotateY, targetRotateZ // each target has to have dif var to control speed of animation along each axis
 let animStartTime
 const animDurationTranslate = 1.5
+const maxZoomOutCamera = 50
+const maxCamPanUp = MathUtils.degToRad(90)
+const maxCamPanDown = MathUtils.degToRad(-90)
+const maxCamPanLeft = (Math.PI) / 2.1 // one entire rotation (360 degrees / 4)
+const maxCamPanRight = -1 * (Math.PI / 2.1)
 
 // variables for mouse intersecting
 var raycaster = new Raycaster();
@@ -57,9 +62,9 @@ const goToLightPosition = (lightIntersectionClicked) => {
     if (targetPos) {
         // goes to target pos/random spot 
         const { x, y, z, rotateX, rotateY, rotateZ } = targetPos
-        // if (x) targetX = x
-        // if (y) targetY = y
-        // if (z) targetZ = z
+        if (x) targetX = x
+        if (y) targetY = y
+        if (z) targetZ = z
         if (rotateX) targetRotateX = rotateX
         if (rotateY) targetRotateY = rotateY
         if (rotateZ) targetRotateZ = rotateZ
@@ -166,7 +171,7 @@ function animation( time, set ) {
         // rectLight5.height = height
     } else if (!isInitHeightSet) {
         // set the height after animation duraiton is done to ensure proper exact height
-        rectLight1.height = 29.3
+        rectLight1.height = 29.28
         rectLight2.height = 29.3
         rectLight3.height = 29.3
         rectLight4.height = 15
@@ -211,13 +216,10 @@ function animation( time, set ) {
         
         // ROTATING CAMERA
         let currRot
-
-        // if (targetRotateX) camera.rotateX(((targetRotateX - originalRotX) * percentageDone) + originalRotX)
-        // if (targetRotateY) camera.rotateY(((targetRotateZ - targetRotateY) * percentageDone) + originalRotY)
         if (targetRotateZ) {
             // Note: original 0degrees of turn === MathUtils.degToRad(180)
 
-            currRot = ((targetRotateZ - 180) * percentageDone) + 180 // currRot === -10 ? camera.rotation.z : (((targetRotateZ - originalRotZ) * percentageDone) + originalRotZ) // (((targetRotateZ - originalRotZ) * percentageDone) + originalRotZ)
+            currRot = ((targetRotateZ - originalRotZ) * percentageDone) + originalRotZ // currRot === -10 ? camera.rotation.z : (((targetRotateZ - originalRotZ) * percentageDone) + originalRotZ) // (((targetRotateZ - originalRotZ) * percentageDone) + originalRotZ)
             camera.rotation.z = MathUtils.degToRad(currRot) //90 * Math.PI / 180 // currRot
 
             console.log('cam 3', { targ_orig: targetRotateZ - originalRotZ, targetRotateZ, originalRotZ, percentageDone, currRot, camRotation: camera.rotation })
@@ -308,6 +310,12 @@ function init(_, set) {
     controls = new OrbitControls( camera, renderer.domElement );
     controls.enableDamping = true;
     controls.dampingFactor = 0.1;
+
+    controls.minAzimuthAngle = maxCamPanLeft
+    controls.maxAzimuthAngle = maxCamPanRight
+    controls.minPolarAngle = maxCamPanDown
+    controls.maxPolarAngle = maxCamPanUp
+    controls.maxDistance = maxZoomOutCamera
 
     // SCENE
     scene = new Scene();
