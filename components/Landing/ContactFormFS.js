@@ -9,32 +9,43 @@ export default function ContactForm() {
   }
 
   return (
-      <form onSubmit={handleSubmit}>
-      <label htmlFor="email">
-        Email Address
-      </label>
-      <input
-        id="email"
-        type="email" 
-        name="email"
-      />
-      <ValidationError 
-        prefix="Email" 
-        field="email"
-        errors={state.errors}
-      />
-      <textarea
-        id="message"
-        name="message"
-      />
-      <ValidationError 
-        prefix="Message" 
-        field="message"
-        errors={state.errors}
-      />
-      <button type="submit" disabled={state.submitting}>
-        Submit
-      </button>
+    <form onSubmit={handleSubmit}>
+    <div className='formContent'>
+        <div className='contentContainer'>
+            <label htmlFor="email" className='emailText labelText'> EMAIL </label>
+            <input
+                id="email"
+                type="email" 
+                name="email"
+                className='input emailInput'
+            />
+            <ValidationError 
+                prefix="Email" 
+                field="email"
+                errors={state.errors}
+            />
+        </div>
+        <div className='contentContainer inq'>
+
+            <label htmlFor="message" className='helpText labelText'> HOW CAN WE HELP </label>
+            <textarea
+                id="message"
+                name="message"
+                className='input msgInput'
+            />
+            <ValidationError 
+                prefix="Message" 
+                field="message"
+                errors={state.errors}
+            />
+            </div>
+
+      </div>
+      <div className='submitBtnContainer'>
+        <button type="submit" className='submitButton' disabled={state.submitting}>
+            SUBMIT
+        </button>
+      </div>
     </form>
   );
 }

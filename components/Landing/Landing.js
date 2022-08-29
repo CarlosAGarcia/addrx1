@@ -41,13 +41,16 @@ export default function Landing() {
             <div className='gridColContainer'>
                 <div className='gridInnerContainer' onMouseOut={() => setContentShown(null)} onMouseOver={() => contentShown === ABOUT ? null : setContentShown(ABOUT)} >
                     <div className={`about textContainer slide-bottom`} >
-                        <div className='text'>{ABOUT}</div>
+                        <div className='text' onMouseOver={() => contentShown === ABOUT ? null : setContentShown(ABOUT)}>{ABOUT}</div>
                     </div>
                     <div className={`additionalContent ${contentShown === ABOUT ? 'slide-bottom additional fastAnim' : 'o-none'}`}>
                         <div className='additionalContentBG'/>
-                        <div>A NEW TYPE OF WEB DEVELOPMENT</div>
-                        <div>FOR THE NEW WEB</div>
-                        
+                        <div>CREATING EXPERIENCES</div>
+                        <div>FOR THE NEW WEB.</div>
+                        <div className='secondaryText'>ENGAGING PLATFORMS</div>
+                        <div className='secondaryText'>USABLE AND UNIQUE DESIGNS</div>
+                        <div className='secondaryText'>HEAVY DUTY WORK FLOWS</div>
+                        <div className='secondaryText'>THE LATEST TECHNOLOGY</div>
                     </div>
                 </div>
             </div>
