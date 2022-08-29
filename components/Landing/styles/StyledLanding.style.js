@@ -12,12 +12,10 @@ font-family: Arial, Helvetica, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
     }
     .gridInnerContainer {
         width: 50%;
         border: 1px solid white;
-        position: absolute;
         * {
             color: #DFD4A9
         }
@@ -35,6 +33,19 @@ font-family: Arial, Helvetica, sans-serif;
         }
 
     }
+}
+.additionalContent {
+    position: relative;
+}
+.additionalContentBG{
+    background: black;
+    opacity: .8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 .loadIn {
     .slide-tr {
