@@ -8,14 +8,32 @@ font-family: Arial, Helvetica, sans-serif;
     grid-gap: .5%;
     margin-top: 5rem;
     font-size: 2rem;
-    .text {
+    .gridColContainer {
         display: flex;
         justify-content: center;
         align-items: center;
-        &:hover {
-            opacity: 0.5;
-            cursor: pointer;
+        position: relative;
+    }
+    .gridInnerContainer {
+        width: 50%;
+        border: 1px solid white;
+        position: absolute;
+        * {
+            color: #DFD4A9
         }
+    }
+    .textContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .text {
+            padding: 1rem;
+            &:hover {
+                opacity: 0.5;
+                cursor: pointer;
+            }            
+        }
+
     }
 }
 .loadIn {
@@ -31,6 +49,10 @@ font-family: Arial, Helvetica, sans-serif;
     .slide-tl {
         -webkit-animation: slide-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: slide-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    .fastAnim {
+        animation-delay: 0s;
+        animation-duration: 0.15s;
     }
 }
 `

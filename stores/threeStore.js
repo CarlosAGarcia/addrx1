@@ -55,6 +55,7 @@ const maxCamPanUp = MathUtils.degToRad(90)
 const maxCamPanDown = MathUtils.degToRad(-90)
 const maxCamPanLeft = (Math.PI) / 2.1 // one entire rotation (360 degrees / 4)
 const maxCamPanRight = -1 * (Math.PI / 2.1)
+let isInitHeightSet = false
 
 // variables for mouse intersecting
 var raycaster = new Raycaster();
@@ -180,7 +181,6 @@ function animation( time, set ) {
     const totalIntensity = 10
 
     const animationDurationHeight = .25 // in s
-    let isInitHeightSet = false
     const totalHeight = 14.899
 
     if (rectLight1 && (timeSeconds >= delay) && (timeSeconds <= animationDurationIntensity)) {
