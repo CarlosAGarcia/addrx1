@@ -14,6 +14,7 @@ import { get, isNumber } from 'lodash'
 let isInit = false
 let totalAnimationTime = 3.5
 
+
 // general scene variables
 let camera, controls, scene, renderer;
 let group, textMesh1, textGeo;
